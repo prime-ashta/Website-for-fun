@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", function() {
-    alert("Welcome to my website!");
+    document.body.insertAdjacentHTML("afterbegin","<p>One stop website for A geeks!</p>");
 });
