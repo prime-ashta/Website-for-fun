@@ -26,3 +26,23 @@ nav ul li a {
     color: rgb(240, 7, 7);
     text-decoration: none;
 }
+
+p {
+    margin-bottom: 20px; /* Increases space between paragraphs */
+    line-height: 1.6; /* Improves readability */
+}
+
+
+ body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex; /* Enables Flexbox */
+}
+main {
+    width: 70%; /* Covers 70% of the page */
+    background-color: #f4f4f4; /* Light background for visibility */
+    padding: 20px;
+}

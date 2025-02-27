@@ -6,5 +6,60 @@
                 Here you can post anything you know about history of , I will be updating them on the website, also if you want something to change regarding website, then comment down here.
             </p>
         </main>
+        <form id="commentForm">
+            <input type="text" id="username" placeholder="Your Name" required>
+            <textarea id="comment" placeholder="Write a comment..." required></textarea>
+            <button type="submit">Post Comment</button>
+        </form>
+        
+        <div id="commentsSection"></div>
+        
     </body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAmjsioHvdotMe3KePvIcNtVW2FUGB0aEg",
+          authDomain: "aheer-77.firebaseapp.com",
+          databaseURL: "https://aheer-77-default-rtdb.firebaseio.com",
+          projectId: "aheer-77",
+          storageBucket: "aheer-77.firebasestorage.app",
+          messagingSenderId: "81814620406",
+          appId: "1:81814620406:web:405f8b4cb98b115cbcc4d7",
+          measurementId: "G-BYEJ8F9E3G"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+      <script>
+        const db = firebase.database().ref("comments");
+      
+        document.getElementById("commentForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            let username = document.getElementById("username").value;
+            let comment = document.getElementById("comment").value;
+      
+            db.push().set({ username, comment });
+      
+            document.getElementById("commentForm").reset();
+        });
+      </script>
+      <script>
+        db.on("child_added", function(snapshot) {
+            let data = snapshot.val();
+            let commentDiv = document.createElement("div");
+            commentDiv.innerHTML = `<strong>${data.username}</strong>: ${data.comment}`;
+            document.getElementById("commentsSection").appendChild(commentDiv);
+        });
+      </script>
+      
 </html>

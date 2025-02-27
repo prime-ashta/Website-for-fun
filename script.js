@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.body.insertAdjacentHTML("afterbegin","<p>One stop website for A geeks!</p>");
+    alert("Congratulations! You are just going to see a lot about Veer Aheers");
 });
